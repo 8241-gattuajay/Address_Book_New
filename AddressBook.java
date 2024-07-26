@@ -34,6 +34,77 @@ public class AddressBook {
         Contacts contact = new Contacts(email, phoneNumber, zip, state, city, address, lastName, firstName);
         contacts.add(contact);
         System.out.println("Contact added successfully!");
-        
+
+    }
+
+    public void editContact() {
+        System.out.println("Enter first name to Edit: ");
+        String firstName = scanner.next();
+        boolean found = false;
+        for (Contacts contact : contacts) {
+            if (contact.getFirstName().equals(firstName)) {
+                System.out.println("Contact found! Enter what you want to edit: ");
+                System.out.println("1. First Name");
+                System.out.println("2. Last Name");
+                System.out.println("3. Address");
+                System.out.println("4. City");
+                System.out.println("5. State");
+                System.out.println("6. Zip Code");
+                System.out.println("7. Phone Number");
+                System.out.println("8. Email");
+                System.out.println("9. Exit");
+
+                System.out.println("Enter your choice: ");
+                int choice = scanner.nextInt();
+
+                switch (choice) {
+                    case 1:
+                        System.out.println("Enter new first name: ");
+                        contact.setFirstName(scanner.next());
+                        break;
+                    case 2:
+                        System.out.println("Enter new last name: ");
+                        contact.setLastName(scanner.next());
+                        break;
+                    case 3:
+                        System.out.println("Enter new address: ");
+                        contact.setAddress(scanner.next());
+                        break;
+                    case 4:
+                        System.out.println("Enter new city: ");
+                        contact.setCity(scanner.next());
+                        break;
+                    case 5:
+                        System.out.println("Enter new state: ");
+                        contact.setState(scanner.next());
+                        break;
+                    case 6:
+                        System.out.println("Enter new zip code: ");
+                        contact.setZip(scanner.nextInt());
+                        break;
+                    case 7:
+                        System.out.println("Enter new phone number: ");
+                        contact.setPhoneNumber(scanner.nextLong());
+                        break;
+                    case 8:
+                        System.out.println("Enter new email: ");
+                        contact.setEmail(scanner.next());
+                        break;
+                    case 9:
+                        break;
+                    default:
+                        System.out.println("Invalid choice! Please enter a valid choice.");
+                        break;
+                }
+
+                System.out.println("Contact updated successfully!");
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Contact not found!");
+        }
     }
 }
