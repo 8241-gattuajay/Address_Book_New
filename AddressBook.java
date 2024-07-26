@@ -125,4 +125,57 @@ public class AddressBook {
         }
 
     }
+
+    public void displayContacts(){
+        if(contacts.isEmpty()){
+            System.out.println("No contacts to display!");
+        } else {
+            for (Contacts contact : contacts) {
+                System.out.println(contact);
+            }
+            System.out.println();
+        }
+    }
+
+    public void start(){
+        int choice;
+        do{
+            System.out.println("Address Book: " + name);
+            System.out.println("1. Add Contact");
+            System.out.println("2. Edit Contact");
+            System.out.println("3. Delete Contact");
+            System.out.println("4. Display Contacts");
+            System.out.println("5. Exit");
+
+            System.out.println("Enter your choice: ");
+            choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch(choice){
+                case 1:
+                    addContact();
+                    break;
+                case 2:
+                    editContact();
+                    break;
+                case 3:
+                    deleteContact();
+                    break;
+                case 4:
+                    displayContacts();
+                    break;
+                case 5:
+                    System.out.println("Exiting...");
+                    break;
+                default:
+                    System.out.println("Invalid choice! Please enter a valid choice.");
+                    break;
+            }
+        }while (choice != 5);
+    }
+
+    public String getName() {
+        return name;
+    }
+    
 }
